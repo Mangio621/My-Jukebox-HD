@@ -1,6 +1,7 @@
 <template>
   <header>
     <h1> 🎧 My Jukebox</h1>
+    <p> Created by Cole P. Mangio 103602247</p>
   </header>
   <nav>
     <router-link to="/">🏠Home</router-link>
