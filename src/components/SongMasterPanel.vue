@@ -36,15 +36,16 @@
                         <h4 class="font-weight-bold mt-4">
                             {{ songData != null ? songData.artist.name : 0 }}
                         </h4>
-                        <v-btn class="bg-success mt-2"> Visit Artist </v-btn>
+                        <router-link v-if="songData != null" :to="getArtistLink">
+                            <v-btn class="bg-success mt-2"> Visit Artist </v-btn>
+                        </router-link>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-5" v-if="videoId != 'null'">
             <youtube-iframe height="300" :video-id="videoId"/>
         </div>
-        {{ console.log(songData) }}
     </div>
 </template>
 
@@ -56,7 +57,7 @@ import { YoutubeIframe } from '@vue-youtube/component';
 export default {
     name: 'SongMasterPanel',
     props: {
-        songId: String 
+        songId: String
     },
     components: {
         YoutubeIframe
@@ -65,6 +66,11 @@ export default {
         return {
             songData: null,
             videoId: ""
+        }
+    },
+    computed: {
+        getArtistLink: function() {
+            return `/artist?id=${this.songData.artist.id}`;
         }
     },
     methods: {
@@ -80,6 +86,7 @@ export default {
     beforeMount() {
         fetchAPIData(`/track/${this.songId}`, (data) => {
             this.songData = data;
+            console.log(data);
             GetYTVideoLink(`${data.title} - ${data.artist.name}`, (id) => {
                 this.videoId = id;
             });

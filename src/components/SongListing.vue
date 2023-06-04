@@ -5,17 +5,11 @@
         </div>
         <div class="col-sm-9">
             <div class="row">
-                <h4 class="text-left font-weight-bold"> {{ songTitle }} </h4>
+                <a :href="getSongLink" class="text-left font-weight-bold songListingName"> {{ songTitle }} </a>
             </div>
             <div class="row">
-                <a class="text-left artistListing">{{ artistName }}</a>
+                <a :href="getArtistLink" class="text-left artistListing">{{ artistName }}</a>
             </div>
-        </div>
-        <div class="col-sm-2">
-            <router-link :to="getSongLink()">
-                <v-btn class="bg-info"> View Song </v-btn>
-            </router-link>
-            
         </div>
     </div>
 </template>
@@ -24,16 +18,20 @@
 export default {
   name: 'SongListing',
   props: {
-    songId: String,
+    songId: Number,
     songTitle: String,
+    artistId: Number,
     artistName: String,
     coverUrl: String,
   },
-  methods: {
+  computed: {
     getSongLink: function() {
         return `/song?id=${this.songId}`;
+    },
+    getArtistLink: function() {
+        return `/artist?id=${this.artistId}`
     }
-  }
+  },
 }
 </script>
 
@@ -47,6 +45,14 @@ export default {
 .songListingImg {
     border-radius: 60px;
     width: 60px;
+}
+
+.songListingName {
+    font-size: 14pt;
+    text-decoration: none;
+}
+.songListingName:hover {
+    background-color: rgb(240, 240, 240);
 }
 
 .artistListing {

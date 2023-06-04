@@ -6,8 +6,8 @@ export const fetchAPIData = (query, callback) => {
     } else {
         url = '/api' + query;
     }
-
+    let r = null;
     fetch(url)
-    .then(res => res.json())
-    .then(data => callback(data));
+    .then(res => {r = res; return res.json()})
+    .then(data => callback(data, r));
 }

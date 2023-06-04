@@ -1,11 +1,25 @@
 <template>
-  <div v-for="song in getSongs" v-bind:key="song">
-    <SongListing 
-    :songId="song.id"
-    :songTitle="song.title" 
-    :artistName="song.artist.name" 
-    :coverUrl="song.album.cover"/>
-  </div>
+  <v-table>
+    <caption> {{caption}} </caption>
+    <thead>
+      <tr>
+        <th id="songListings" scope="col"> {{name}} </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="song in getSongs" v-bind:key="song">
+        <td header="songListings">
+          <SongListing 
+            :songId="song.id"
+            :songTitle="song.title" 
+            :artistId="song.artist.id"
+            :artistName="song.artist.name" 
+            :coverUrl="song.album.cover"/>
+        </td>
+      </tr>
+    </tbody>
+  </v-table>
+  
 
   <div class="row">
     <v-pagination 
@@ -13,10 +27,6 @@
       :length=getPageCount
       >
     </v-pagination>
-  </div>
-  <div>
-    {{ console.log(songsPerPage) }}
-    {{console.log(songs)}}
   </div>
 </template>
 
@@ -26,8 +36,10 @@ import SongListing from '@/components/SongListing.vue'
 export default {
   name: 'SongList',
   props: {
-    songsPerPage: String,
-    data: Array
+    songsPerPage: Number,
+    data: Array,
+    name: String,
+    caption: String,
   },
   components: {
     SongListing
