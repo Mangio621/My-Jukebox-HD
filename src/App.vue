@@ -4,10 +4,10 @@
     <p> Created by Cole P. Mangio 103602247</p>
   </header>
   <nav>
-    <router-link to="/">🏠Home</router-link>
-    <router-link to="/search">🔍Search</router-link>
-    <router-link to="/genreGame"> 🎮 Genre Game </router-link>
-    <router-link to="/about">❓About</router-link>
+      <router-link class="navItem" to="/">🏠Home</router-link>
+      <router-link class="navItem" to="/search">🔍Search</router-link>
+      <router-link class="navItem" to="/genreGame"> 🎮 Genre Game </router-link>
+      <router-link class="navItem" to="/about">❓About/Help</router-link>
   </nav>
   <router-view/>
 </template>
@@ -33,7 +33,7 @@ nav a {
   border-width: 1px;
   padding: 10px;
   text-decoration: none;
-  margin-right: 3px
+  margin-right: 3px;
 }
 
 nav a.router-link-exact-active {
@@ -43,6 +43,12 @@ nav a.router-link-exact-active {
 header h1 {
   font-family: "title";
   font-size: 40pt;
+}
+
+@media (max-width: 530px) {
+  .navItem {
+    display:block; 
+  }
 }
 
 @font-face {

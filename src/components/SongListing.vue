@@ -1,14 +1,18 @@
 <template>
     <div class="row songListing">
-        <div class="col-sm-1">
+        <div class="col-lg-1 col-md-2 col-sm-2">
             <img class="songListingImg" :src="coverUrl"/>
         </div>
-        <div class="col-sm-9">
+        <div class="col-lg-6 col-md-6 col-sm-5">
             <div class="row">
-                <a :href="getSongLink" class="text-left font-weight-bold songListingName"> {{ songTitle }} </a>
+                <router-link class="text-left font-weight-bold songListingName" :to="getSongLink">
+                    {{ songTitle }} 
+                </router-link>
             </div>
             <div class="row">
-                <a :href="getArtistLink" class="text-left artistListing">{{ artistName }}</a>
+                <router-link class="text-left artistListing" :to="getArtistLink"> 
+                    {{ artistName }}
+                </router-link>
             </div>
         </div>
     </div>

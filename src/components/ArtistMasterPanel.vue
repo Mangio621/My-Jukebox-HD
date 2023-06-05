@@ -6,7 +6,7 @@
                 class="img-fluid masterSongCover" 
                 :src="artistData != null ? artistData.picture_big : ''"/>
             </div>
-            <div class="col-sm-4">
+            <div class="col-xs-12 col-md-4">
                 <div class="row">
                     <h1 class="text-left font-weight-bold">{{artistData != null ? artistData.name : ''}}</h1>
                 </div>

@@ -1,12 +1,12 @@
 <template>
     <div class="container">
         <div class="row mt-5">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <img 
                 class="img-fluid masterSongCover" 
                 :src="songData != null ? songData.album.cover_big : ''"/>
             </div>
-            <div class="col-sm-4">
+            <div class="col-xs-12 col-md-4">
                 <div class="row">
                     <h1 class="text-left font-weight-bold">{{songData != null ? songData.title: ''}}</h1>
                 </div>
@@ -32,7 +32,7 @@
                     <div class="col-sm-4">
                         <img class="img-fluid masterSongArtistPic" :src="songData != null ? songData.artist.picture_medium : ''"/>
                     </div>
-                    <div class="col-sm-6 text-left ps-0">
+                    <div class="col-sm-8 text-left ps-0">
                         <h4 class="font-weight-bold mt-4">
                             {{ songData != null ? songData.artist.name : 0 }}
                         </h4>
@@ -43,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-5" v-if="videoId != 'null'">
+        <div class="row mt-5" v-if="videoId != ''">
             <youtube-iframe height="300" :video-id="videoId"/>
         </div>
     </div>
